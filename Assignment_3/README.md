@@ -1,5 +1,13 @@
-COEN 80Assignment 3Yelp Database Challenge READMECOEN 280 Author: Mani Bhargavi Ketha W1186016Due Date: June 1,2016Environment: NetBeans IDE for Java DevelopersOracle Database 11g Express Edition
-SQL Developer IDEIntroduction:
+COEN 280
+Assignment 3
+Yelp Database Challenge 
+
+
+Environment: NetBeans IDE for Java Developers
+Oracle Database 11g Express Edition
+SQL Developer IDE
+
+Introduction:
 
 Part 1: Design and population of yelp database:
 
