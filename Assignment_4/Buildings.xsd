@@ -1,0 +1,73 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema"
+	elementFormDefault="qualified">
+		<xs:element name="BuildingCode">
+		<xs:simpleType>
+			<xs:restriction base="xs:string">
+				<xs:pattern value="[A-Z|a-z]{3}"></xs:pattern>
+				<xs:length value="3" />
+			</xs:restriction>
+		</xs:simpleType>
+	</xs:element>
+	<xs:element name="Position">
+		<xs:complexType>
+			<xs:sequence>
+				<xs:element name="Latitude" minOccurs="1"
+					maxOccurs="1">
+					<xs:simpleType>
+						<xs:restriction base="xs:string">
+							<xs:minLength value="1"></xs:minLength>
+						</xs:restriction>
+					</xs:simpleType>
+				</xs:element>
+				<xs:element name="Longitude" minOccurs="1">
+					<xs:simpleType>
+						<xs:restriction base="xs:string">
+							<xs:minLength value="1"></xs:minLength>
+						</xs:restriction>
+					</xs:simpleType>
+				</xs:element>
+			</xs:sequence>
+		</xs:complexType>
+	</xs:element>
+    <xs:element name="Address">
+		<xs:complexType>
+			<xs:sequence>
+				<xs:element name="StreetNo" type="xs:integer"></xs:element>
+				<xs:element name="StrName" type="xs:string"></xs:element>
+				<xs:element name="City" type="xs:string"></xs:element>
+				<xs:element name="State" type="xs:string"></xs:element>
+				<xs:element name="Zip" type="xs:integer"></xs:element>
+			</xs:sequence>
+		</xs:complexType>
+	</xs:element>
+
+	<xs:element name="Building">
+		<xs:complexType>
+			<xs:sequence>
+				<xs:element ref="BuildingCode" maxOccurs="1" minOccurs="1"/>
+				<xs:element name="BuildingName" maxOccurs="1"
+					minOccurs="1">
+					<xs:simpleType>
+						<xs:restriction base="xs:string">
+							<xs:minLength value="1"></xs:minLength>
+						</xs:restriction>
+					</xs:simpleType>
+				</xs:element>
+				<xs:element ref="Position" maxOccurs="1" minOccurs="1"/>
+				<xs:element ref="Address" minOccurs="0" maxOccurs="1" />
+			</xs:sequence>
+		</xs:complexType>
+		<xs:key name="PK_BuildingCode">
+			<xs:selector xpath=".//Building"></xs:selector>
+			<xs:field xpath="BuildingCode"></xs:field>
+		</xs:key>
+	</xs:element>
+	<xs:element name="Buildings">
+		<xs:complexType>
+			<xs:sequence>
+				<xs:element ref="Building" maxOccurs="unbounded" />
+			</xs:sequence>
+		</xs:complexType>
+	</xs:element>
+</xs:schema>
